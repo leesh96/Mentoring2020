@@ -4,7 +4,7 @@ num_list = input().split()
 for i in range(N):
     num_list[i] = int(num_list[i])
 
-print(num_list)
+# print(num_list)
 
 Max = num_list[0]
 for i in range(0, N-1):
