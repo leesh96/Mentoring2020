@@ -6,10 +6,6 @@ for i in range(9):
 maximum = num[0]
 index = 0
 
-for i in range(1, 9):
-    if maximum < num[i]:
-        maximum = num[i]
-        index = i
 
 print(max(num))
-print(index + 1)
+print(num.index(max(num)))
