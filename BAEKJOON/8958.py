@@ -3,6 +3,7 @@ N = int(input())
 ox_list = []
 for i in range(N):
     ox_list.append((input()))
+
 '''풀이1'''
 # for i in range(N):
 #     score = 0
@@ -14,6 +15,7 @@ for i in range(N):
 #         else:
 #             plus_score = 0
 #     print(score)
+
 '''풀이2'''
 for ox_str in ox_list: #ox_list에서 하나씩
     score = 0
