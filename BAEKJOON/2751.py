@@ -10,6 +10,7 @@
 # for v in num_list:
 #     print(v)
 
+
 '''함수 없이 - 런타임 에러'''
 import sys
 
