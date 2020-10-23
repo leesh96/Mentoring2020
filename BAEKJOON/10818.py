@@ -1,8 +1,9 @@
 N = int(input())
 # num_list = []
 num_list = input().split()
-for i in range(N):
-    num_list[i] = int(num_list[i])
+# for i in range(N):
+#     num_list[i] = int(num_list[i])
+num_list = list(map(int, num_list))
 
 # print(num_list)
 
@@ -20,4 +21,4 @@ for i in range(0, N-1):
     else:
         continue
 
-print(Min,Max)
+print(Min, Max)

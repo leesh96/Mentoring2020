@@ -6,10 +6,11 @@ elif N > M:
     max_num = M
     min_num = N
 else:
-    max_num = M
-    min_num = max_num
+    max_num == M
+    min_num == N
 
-for i in range(2, min_num+1): #2부터 min_num까지 체크
+
+for i in range(1, min_num+1): #2부터 min_num까지 체크
     if min_num % i == 0 and max_num % i == 0:
         result_1 = i
 
