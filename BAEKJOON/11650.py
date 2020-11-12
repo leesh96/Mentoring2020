@@ -63,12 +63,12 @@ def merge(array, left, right):
             q += 1
         t += 1
 
-    while p < len(left):  # 왼쪽 배열 남았으면
+    while p < len(left):
         array[t] = left[p]
         t += 1
         p += 1
 
-    while q < len(right):  # 오른쪽 배열 남았으면
+    while q < len(right):
         array[t] = right[q]
         t += 1
         q += 1
