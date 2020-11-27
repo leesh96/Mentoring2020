@@ -20,6 +20,7 @@ for target in input_list:
     result_list.append('-')
 
 
+
 if is_valid:
     for result in result_list:
         print(result)
