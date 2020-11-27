@@ -19,11 +19,9 @@ def work(grid, inventory, height): #목표 높이가 되도록 블럭 +-, invent
             inventory -= (height - block)
     return time_count, inventory
 
-height_list = range(257) #목표 높이
 time_result, height_result= [], []
 
-
-for height in height_list:
+for height in range(257):
     time_count, inventory = work(grid, B, height)
     if inventory < 0: # 만약 인벤토리에 블럭이 음수이면 있을 수 없는 경우이므로 pass
         continue
