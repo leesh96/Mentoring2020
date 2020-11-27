@@ -1,3 +1,5 @@
+'''시간초과 ㅠㅠ'''
+
 import sys
 
 N, M, B = map(int, sys.stdin.readline().split())
@@ -17,7 +19,7 @@ def work(grid, inventory, height): #목표 높이가 되도록 블럭 +-, invent
             inventory -= (height - block)
     return time_count, inventory
 
-height_list = range(0, 256) #목표 높이
+height_list = range(257) #목표 높이
 time_result, height_result= [], []
 
 
