@@ -1,47 +1,46 @@
-n, m, b = map(int, input().split())
+import sys
 
 ground = []
-ground_times = dict()
-time_by_dig = 2
-time_by_put = 1
+ground_data = dict()
+TIME_BY_DIG, TIME_BY_PUT = 2, 1
+min_time, that_height = 128000000, 0
+
+
+def try_to_make(ground_data, trying_height):
+    time = 0
+
+    for data in ground_data.items():
+        if data[0] < trying_height:
+            time += TIME_BY_PUT * data[1] * (trying_height - data[0])
+        elif data[0] > trying_height:
+            time += TIME_BY_DIG * data[1] * (data[0] - trying_height)
+
+    return time, trying_height
+
+
+n, m, b = map(int, sys.stdin.readline().rstrip().split())
 
 for i in range(n):
-    ground += input().split()
+    ground += map(int, sys.stdin.readline().rstrip().split())
 
 for i in ground:
-    if i not in ground_times:
-        ground_times[i] = 1
+    if i not in ground_data:
+        ground_data[i] = 1
     else:
-        ground_times[i] += 1
+        ground_data[i] += 1
 
-'''
-sorted_ground = sorted(ground_times.items(), key = lambda x : x[1])
-choibin1 = sorted_ground[0][0]
-choibin2 = sorted_ground[1][0]
+existing_blocks = sum(ground) + b
 
-def fix(choibin, b):
-    global ground, time_by_put, time_by_dig
+for height in range(257):
 
-    fix_by_dig = 0
-    fix_by_put = 0
-    for i in ground:
-        if i > choibin:
-            fix_by_dig += 1
-            b += 1
-        elif i < choibin:
-            if b > 0:
-                fix_by_put += 1
-                b -= 1
-            else:
-                return -1
+    if n * m * height > existing_blocks:
+        continue
 
-    return fix_by_dig * time_by_dig + fix_by_put * time_by_put
+    temp_time, temp_that_height = try_to_make(ground_data, height)
+    if temp_time < min_time:
+        min_time, that_height = temp_time, temp_that_height
+    elif temp_time == min_time:
+        if that_height < temp_that_height:
+            min_time, that_height = temp_time, temp_that_height
 
-result1 = fix(choibin1, b)
-result2 = fix(choibin2, b)
-
-if result1 < result2:
-    print(result1, choibin1)
-else:
-    print(result2, choibin2)
-'''
+print(min_time, that_height)
