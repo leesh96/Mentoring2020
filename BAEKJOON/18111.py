@@ -1,33 +1,36 @@
-'''시간초과 ㅠㅠ'''
-
+'''왜 안될까...'''
 import sys
 
-N, M, B = map(int, sys.stdin.readline().split())
-
-input_list = [list(map(int,sys.stdin.readline().split())) for _ in range(N)] #좌표 이중리스트로 받음
-
-grid = sum(input_list, []) #이중리스트 1차원리스트로
-
-def work(grid, inventory, height): #목표 높이가 되도록 블럭 +-, inventory는 블럭개수.
+def work(height):
     time_count = 0
-    for block in grid:
+    for block in blocks_dict: #block은 높이 종류
         if block > height:
-            time_count += (block - height) * 2
-            inventory += (block - height)
+                time_count += (block - height) * 2 * blocks_dict[block]
         elif block < height:
-            time_count += (height - block)
-            inventory -= (height - block)
-    return time_count, inventory
+                time_count += (height - block) * blocks_dict[block]
+    return time_count
 
-time_result, height_result= [], []
+'''입력'''
+N, M, B = map(int, sys.stdin.readline().split())
+grid = []
+for _ in range(N):
+    grid.extend(map(int, sys.stdin.readline().split())) #extend는 여러개 입력
+''''''
+time_result, height_result = 128000000, 0
 
-for height in range(257):
-    time_count, inventory = work(grid, B, height)
-    if inventory < 0: # 만약 인벤토리에 블럭이 음수이면 있을 수 없는 경우이므로 pass
-        continue
-    else:
-        time_result.append(time_count)
-        height_result.append(height)
+blocks = sum(grid) + B
 
-#가능한 경우 중 시간 최솟값과 그때 높이 출력
-print(min(time_result), height_result[time_result.index(min(time_result))])
+blocks_dict = {}
+for i in grid:
+    if i not in blocks_dict.keys():
+        blocks_dict[i] = grid.count(i)
+
+for height in range(257): # 0~257 전부 탐색
+    blocks_need = N * M * height
+    if blocks >= blocks_need: # 가진블록이 필요한 블럭많을때만
+        time_count = work(height)
+        if time_count <= time_result:
+            time_result = time_count
+            height_result = height
+
+print(time_result, height_result)
