@@ -1,5 +1,5 @@
 import sys
-sys.setrecursionlimit(50000) #런타임에러나서...
+sys.setrecursionlimit(50000) #런타임에러나서..
 
 def Test_f():
     def check(x, y):
