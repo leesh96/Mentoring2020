@@ -23,7 +23,7 @@ T = int(sys.stdin.readline().rstrip())
 
 for _ in range(T):
     M, N, K = map(int, sys.stdin.readline().rstrip().split())
-    farm = [[0 for _ in range(M)] for _ in range(N)]  # T회 실행되므로 매번 농장을 초기화
+    farm = [[0] * M for _ in range(N)]  # T회 실행되므로 매번 농장을 초기화
     for _ in range(K):
         x, y = map(int, sys.stdin.readline().rstrip().split())
         farm[y][x] = 1  # x축 >> ; y축 vv ; 이차원배열과 축이 반대
