@@ -26,8 +26,9 @@ WBWBWBWB
 BWBWBWBW
 WBWBWBWB
 BWBWBWBW
-짝수, 짝수 or 홀수, 홀수 W '''
-
+짝수, 짝수 or 홀수, 홀수 W
+else B
+'''
 
 def check_chess(chess):
 
