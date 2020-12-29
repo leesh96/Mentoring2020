@@ -1,6 +1,6 @@
 import sys
 from collections import deque
-sys.setrecursionlimit(100000)
+sys.setrecursionlimit(1000000)
 
 def BFS(x, y):
     global cnt
@@ -12,7 +12,7 @@ def BFS(x, y):
     while queue:
         c_x, c_y = queue.popleft()
         for p_x, p_y in check:
-            if 0 <= x + p_x < M and 0 <= y + p_y < N:
+            if 0 <= c_x + p_x < M and 0 <= c_y + p_y < N:
                 if grid[c_x + p_x][c_y + p_y] == 1 and [c_x + p_x, c_y + p_y] not in visit:
                     visit.append([c_x + p_x, c_y + p_y])
                     queue.append([c_x + p_x, c_y + p_y])
