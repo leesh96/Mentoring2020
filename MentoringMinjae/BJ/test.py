@@ -1,0 +1,1 @@
+print("임의의 python 파일을 실행하기 위해선 그 파일을 연 채로 ctrl + shift + f10.")
